@@ -3,7 +3,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 
-
 Vue.use(Router);
 
 const router = new Router({
@@ -11,41 +10,42 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '*',
-      redirect: '/home',
-    },
-    {
-      path: '/',
-      redirect: '/home',
+      path: '/profile/:user',
+      name: 'Profile',
+      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
     },
     {
       path: '/login',
       name: 'Login',
-      component: () => import(/* webpackChunkName: "about" */ './views/Login.vue'),
+      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue'),
     },
     {
       path: '/signup',
       name: 'Signup',
-      component: () => import(/* webpackChunkName: "about" */ './views/Signup.vue'),
+      component: () => import(/* webpackChunkName: "signup" */ './views/Signup.vue'),
     },
     {
       path: '/reset',
       name: 'Reset',
-      component: () => import(/* webpackChunkName: "about" */ './views/Reset.vue'),
+      component: () => import(/* webpackChunkName: "reset" */ './views/Reset.vue'),
+    },
+    {
+      path: '*',
+      redirect: '/home',
     },
     {
       path: '/home',
       name: 'Home',
       component: Home,
     },
+
   ],
 });
 
 // checks that a user is logged in before allowing them to go to certain pages
 router.beforeEach((to, from, next) => {
-  const { currentUser } = firebase.auth();
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-
+  const { currentUser } = firebase.auth();
   if (requiresAuth && !currentUser) next('login');
   else next();
 });

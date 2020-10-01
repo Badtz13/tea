@@ -4,7 +4,7 @@
     <input class="border p-2 m-2" type="email" v-model="email">
     <input class="border p-2 m-2" type="text" v-model="username">
     <input class="border p-2 m-2" type="password" v-model="password">
-    <button @click="signup">Signup</button>
+    <button @click="checkForm">Signup</button>
   </div>
 </template>
 
@@ -24,6 +24,16 @@ export default ({
     };
   },
   methods: {
+    checkForm() {
+      firebase.database().ref('users').once('value', (snapshot) => {
+        const userList = Object.values(snapshot.val()).map(user => user.username);
+        if (!userList.includes(this.username)) {
+          this.signup();
+        } else {
+          console.error('Username already taken');
+        }
+      });
+    },
     signup() {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then((user) => {
         firebase.database().ref('users').push().set({
