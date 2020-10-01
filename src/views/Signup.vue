@@ -36,7 +36,7 @@ export default ({
     },
     signup() {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then((user) => {
-        firebase.database().ref('users').push().set({
+        firebase.database().ref(`users/${user.user.uid}`).set({
           uid: user.user.uid,
           username: this.username,
           joinDate: Date.now(),

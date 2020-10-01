@@ -1,7 +1,7 @@
 <template>
   <div>
     home
-    <div v-if="user">{{user}}</div>
+    <!-- <div v-if="user">{{user}}</div> -->
   </div>
 </template>
 
@@ -9,7 +9,9 @@
 
 export default {
   name: 'home',
-  props: ['user'],
+  props: {
+    user: Object,
+  },
   data() {
     return {};
   },

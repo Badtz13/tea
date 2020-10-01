@@ -10,7 +10,9 @@ import 'firebase/database';
 
 export default {
   name: 'home',
-  props: ['user'],
+  props: {
+    user: Object,
+  },
   data() {
     return {
       viewing: null,
