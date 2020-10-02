@@ -10,9 +10,22 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/profile/:user/:view?',
-      name: 'Profile',
-      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
+      path: '/user/:user',
+      component: () => import(/* webpackChunkName: "user" */ './views/User.vue'),
+      children: [
+        {
+          path: 'profile',
+          component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
+        },
+        {
+          path: 'list',
+          component: () => import(/* webpackChunkName: "list" */ './views/List.vue'),
+        },
+        {
+          path: '/',
+          component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
+        },
+      ],
     },
     {
       path: '/login',

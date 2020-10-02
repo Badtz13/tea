@@ -1,18 +1,17 @@
 <template>
   <div>
-    <h1>Profile</h1>
-    <div> {{userData}} </div>
+    <router-link :to="`/user/${viewing}/list`">View List</router-link>
+    <div>{{userData}}</div>
   </div>
 </template>
+
 <script>
+
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 
 export default {
-  name: 'home',
-  props: {
-    user: Object,
-  },
+  name: 'Profile',
   data() {
     return {
       viewing: null,

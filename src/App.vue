@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="h-max">
+    <router-view class="mb-16" :user='user'/>
     <Navbar :user='user'/>
-    <router-view :user='user'/>
   </div>
 </template>
 
