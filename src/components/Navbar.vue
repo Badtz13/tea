@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-16 bg-white text-teal-700 border-t-2 border-teal-700 text-2xl flex flex-row justify-around bottom-0 fixed ">
+  <nav class="w-full h-16 bg-white text-teal-700 border-t-2 border-teal-700 text-2xl flex flex-row justify-around bottom-0 fixed ">
     <router-link class="mt-3 w-10" to="/home">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" stroke-width=1.2 d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -25,7 +25,7 @@
     </router-link>
 
     <!-- {{user}} -->
-  </div>
+  </nav>
 </template>
 
 <script>
